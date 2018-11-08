@@ -1,0 +1,38 @@
+{% extends "app/layout_bs3.html" %}
+
+{% load menu_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-appindexpage{% endblock %}
+
+{% block display %}
+    <h1>{{ page.title }}</h1>
+
+    <div class="body">{{ page.body|richtext }}</div>
+
+    <div class="row">
+
+    <div class="col-md-6">
+        {% if page.get_children %}
+            <p>Children of the page:</p>
+        {% endif %}
+
+        {% for post in page.get_children %}
+            <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+            {{ post.specific.body|richtext }}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-6">
+    {% main_menu max_levels=5 template="menus/bootstrap3/main_menu_dropdown.html" %}   
+    </div>
+
+    </div>
+
+
+
+
+    <br><br>
+    <p>{{ menu|richtext }}</p>
+
+{% endblock %}

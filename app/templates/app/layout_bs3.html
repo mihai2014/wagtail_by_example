@@ -1,0 +1,68 @@
+{% extends "app/base.html" %}
+
+{% load wagtailcore_tags %}
+{% load menu_tags %}
+{% load static %}
+
+{% with remote="false" %}
+
+    {% block extra_css %}
+
+        {% if remote == "true" %}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        {% else %}
+<link href="{% static 'app/bootstrap-3.3.7/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'app/bootstrap-3.3.7/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+        {% endif %}
+
+<link href="{% static 'app/menu_click/css/bootstrap-navbar.css' %}" rel="stylesheet">
+
+    {% endblock %}
+
+
+    {% block extra_js %}
+
+        {% if remote == "true" %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        {% else %}
+<script src="{% static 'app/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'app/bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+        {% endif %}
+
+<script src="{% static 'app/menu_click/js/bootstrap-3-navbar.js' %}"></script>
+
+    {% endblock %}
+
+{% endwith %}
+
+
+{% block content %}
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Link 1</a></li>
+      <li><a href="#">Link 2</a></li>
+      <li><a href="#">Link 3</a></li>
+    </ul>
+      {% main_menu max_levels=5 template="menus/bootstrap3/main_menu_dropdown.html" %}
+  </div>
+</nav>
+  
+<div class="container">
+
+    {% block display %}
+    {% endblock %}
+
+</div>
+
+{% endblock %}

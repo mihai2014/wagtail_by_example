@@ -1,0 +1,17 @@
+{% extends "app/layout_bs3.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-apppage{% endblock %}
+
+{% block display %}
+    <h1>{{ page.title }}</h1>
+
+    <div class="body">{{ page.body|richtext }}</div>
+
+    {% for post in page.get_children %}
+        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+        {{ post.specific.body|richtext }}
+    {% endfor %}
+
+{% endblock %}
