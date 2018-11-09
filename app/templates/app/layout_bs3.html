@@ -18,7 +18,6 @@
 <link href="{% static 'app/bootstrap-3.3.7/css/bootstrap-theme.min.css' %}" rel="stylesheet">
         {% endif %}
 
-<link href="{% static 'app/menu_click/css/bootstrap-navbar.css' %}" rel="stylesheet">
 
     {% endblock %}
 
@@ -34,7 +33,7 @@
 <script src="{% static 'app/bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
         {% endif %}
 
-<script src="{% static 'app/menu_click/js/bootstrap-3-navbar.js' %}"></script>
+<script src="{% static 'app/menu_click/js/navbar.js' %}"></script>
 
     {% endblock %}
 
@@ -49,12 +48,12 @@
       <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="/">Home</a></li>
       <li><a href="#">Link 1</a></li>
       <li><a href="#">Link 2</a></li>
       <li><a href="#">Link 3</a></li>
     </ul>
-      {% main_menu max_levels=5 template="menus/bootstrap3/main_menu_dropdown.html" %}
+    {% main_menu max_levels=5 template=menu %}
   </div>
 </nav>
   
