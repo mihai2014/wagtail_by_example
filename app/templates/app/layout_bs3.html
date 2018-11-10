@@ -18,6 +18,7 @@
 <link href="{% static 'app/bootstrap-3.3.7/css/bootstrap-theme.min.css' %}" rel="stylesheet">
         {% endif %}
 
+<link href="{% static 'app/menu_hoover/navbar.css' %}" rel="stylesheet">
 
     {% endblock %}
 
@@ -33,7 +34,10 @@
 <script src="{% static 'app/bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
         {% endif %}
 
+{% if template_menu == "native" %}
+<!-- adjusting bs3 wagtail native menu classes to fit to bs4 -->
 <script src="{% static 'app/menu_click/js/navbar.js' %}"></script>
+{% endif %}
 
     {% endblock %}
 
@@ -45,7 +49,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">Logo</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>

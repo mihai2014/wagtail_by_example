@@ -20,15 +20,20 @@ class AppIndexPage(Page):
 
         bs = request.GET.get('bs')
         event = request.GET.get('event')
+        template_menu = request.GET.get('template_menu')
 
         context['bs'] = bs
         context['event'] = event
+        context['template_menu'] = template_menu
         
         description = "Multi-line drop-down menu"
 
         if(event == 'click'):
             description += " (click) "
-            context['menu'] = "menus/bootstrap3/main_menu_dropdown.html" 
+            if(template_menu == 'native'):
+                context['menu'] = "menus/bootstrap3/main_menu_dropdown.html" 
+            if(template_menu == 'custom'):
+                context['menu'] = "app/menu_bs4/menu.html"
 
         if(bs == '3'):
             description += "using bootstrap 3"
